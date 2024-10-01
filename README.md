@@ -32,7 +32,7 @@ classDiagram
         description : string
     }
 
-    Ruan --> Account
-    Ruan --> Feature
-    Ruan --> Card
-    Ruan --> News
+    Ruan "1" *-- "1" Account
+    Ruan "1" *-- "N" Feature
+    Ruan "1" *-- "1" Card
+    Ruan "1" *-- "N" News
