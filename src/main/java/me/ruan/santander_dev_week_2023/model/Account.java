@@ -1,10 +1,10 @@
 package me.ruan.santander_dev_week_2023.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 
-@Entity(name = "tb_account")
+@Entity
+@Table(name = "tb_account")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +12,14 @@ public class Account {
 
     @Column(unique = true)
     private String number;
+
     private String agency;
+
     @Column(precision = 13, scale = 2)
-    private BigDecimal balance; //BigDecimal é uma maneira exata de representar números. A desvantagem do BigDecimal é que é mais lento, mas se você está lidando com dinheiro, ou se a precisão é uma obrigação, use BigDecimal. Caso contrário, Doubles tendem a ser bons o suficiente.
-    @Column(precision = 13, scale = 2)
-    private BigDecimal limit;
+    private BigDecimal balance; // Usado para representar a precisão do dinheiro.
+
+    @Column(name = "credit_limit", precision = 13, scale = 2) // Alterando de 'limit' para 'credit_limit'
+    private BigDecimal creditLimit;
 
     public Long getId() {
         return id;
@@ -42,12 +45,12 @@ public class Account {
         this.agency = agency;
     }
 
-    public BigDecimal getLimit() {
-        return limit;
+    public BigDecimal getCreditLimit() { // Alterando o getter
+        return creditLimit;
     }
 
-    public void setLimit(BigDecimal limit) {
-        this.limit = limit;
+    public void setCreditLimit(BigDecimal creditLimit) { // Alterando o setter
+        this.creditLimit = creditLimit;
     }
 
     public BigDecimal getBalance() {

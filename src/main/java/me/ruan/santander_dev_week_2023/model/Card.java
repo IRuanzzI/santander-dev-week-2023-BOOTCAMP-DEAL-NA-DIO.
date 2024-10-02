@@ -1,10 +1,10 @@
 package me.ruan.santander_dev_week_2023.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 
-@Entity(name = "tb_card")
+@Entity
+@Table(name = "tb_card") // Usar a anotação @Table para especificar o nome da tabela
 public class Card {
 
     @Id
@@ -14,8 +14,8 @@ public class Card {
     @Column(unique = true)
     private String number;
 
-    @Column(precision = 13, scale = 2)
-    private BigDecimal limit;
+    @Column(name = "credit_limit", precision = 13, scale = 2) // Alterando de 'limit' para 'credit_limit'
+    private BigDecimal creditLimit;
 
     public int getId() {
         return id;
@@ -33,11 +33,11 @@ public class Card {
         this.number = number;
     }
 
-    public BigDecimal getLimit() {
-        return limit;
+    public BigDecimal getCreditLimit() { // Alterando o getter
+        return creditLimit;
     }
 
-    public void setLimit(BigDecimal limit) {
-        this.limit = limit;
+    public void setCreditLimit(BigDecimal creditLimit) { // Alterando o setter
+        this.creditLimit = creditLimit;
     }
 }
