@@ -13,9 +13,9 @@ public class Account {
     @Column(unique = true)
     private String number;
     private String agency;
-    @Column(precision = 2, scale = 13)
+    @Column(precision = 13, scale = 2)
     private BigDecimal balance; //BigDecimal é uma maneira exata de representar números. A desvantagem do BigDecimal é que é mais lento, mas se você está lidando com dinheiro, ou se a precisão é uma obrigação, use BigDecimal. Caso contrário, Doubles tendem a ser bons o suficiente.
-    @Column(precision = 2, scale = 13)
+    @Column(precision = 13, scale = 2)
     private BigDecimal limit;
 
     public Long getId() {

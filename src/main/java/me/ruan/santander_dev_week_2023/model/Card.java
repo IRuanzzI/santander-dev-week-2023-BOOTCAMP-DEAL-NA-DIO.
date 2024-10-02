@@ -14,7 +14,7 @@ public class Card {
     @Column(unique = true)
     private String number;
 
-    @Column(precision = 2, scale = 13)
+    @Column(precision = 13, scale = 2)
     private BigDecimal limit;
 
     public int getId() {
